@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-cars
+      author: lukian
+      changes:
+        - insert:
+            tableName: cars
+            columns:
+              - column: { name: model, value: 'Model X' }
+              - column: { name: brand, value: 'Tesla' }
+              - column: { name: type, value: 'SUV' }
+              - column: { name: inventory, value: 5 }
+              - column: { name: daily_fee, value: 1000.00 }
+        - insert:
+            tableName: cars
+            columns:
+              - column: { name: model, value: 'Model 3' }
+              - column: { name: brand, value: 'Tesla' }
+              - column: { name: type, value: 'SEDAN' }
+              - column: { name: inventory, value: 10 }
+              - column: { name: daily_fee, value: 800.00 }
+        - insert:
+            tableName: cars
+            columns:
+              - column: { name: model, value: 'Model S' }
+              - column: { name: brand, value: 'Tesla' }
+              - column: { name: type, value: 'SEDAN' }
+              - column: { name: inventory, value: 7 }
+              - column: { name: daily_fee, value: 900.00 }
