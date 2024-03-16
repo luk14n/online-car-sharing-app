@@ -1,8 +1,8 @@
 package com.lukian.onlinecarsharing.mapper;
 
 import com.lukian.onlinecarsharing.config.MapperConfig;
-import com.lukian.onlinecarsharing.dto.CarDto;
-import com.lukian.onlinecarsharing.dto.CreateCarRequestDto;
+import com.lukian.onlinecarsharing.dto.car.CarDto;
+import com.lukian.onlinecarsharing.dto.car.CreateCarRequestDto;
 import com.lukian.onlinecarsharing.model.Car;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;

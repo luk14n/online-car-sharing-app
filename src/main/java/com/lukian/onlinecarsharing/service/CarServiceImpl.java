@@ -1,8 +1,8 @@
 package com.lukian.onlinecarsharing.service;
 
-import com.lukian.onlinecarsharing.dto.CarDto;
-import com.lukian.onlinecarsharing.dto.CreateCarRequestDto;
-import com.lukian.onlinecarsharing.dto.UpdateCarRequestDto;
+import com.lukian.onlinecarsharing.dto.car.CarDto;
+import com.lukian.onlinecarsharing.dto.car.CreateCarRequestDto;
+import com.lukian.onlinecarsharing.dto.car.UpdateCarRequestDto;
 import com.lukian.onlinecarsharing.exception.EntityNotFoundException;
 import com.lukian.onlinecarsharing.mapper.CarMapper;
 import com.lukian.onlinecarsharing.model.Car;

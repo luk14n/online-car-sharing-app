@@ -1,4 +1,4 @@
-package com.lukian.onlinecarsharing.dto;
+package com.lukian.onlinecarsharing.dto.car;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
