@@ -1,8 +1,8 @@
 package com.lukian.onlinecarsharing.controller;
 
-import com.lukian.onlinecarsharing.dto.CarDto;
-import com.lukian.onlinecarsharing.dto.CreateCarRequestDto;
-import com.lukian.onlinecarsharing.dto.UpdateCarRequestDto;
+import com.lukian.onlinecarsharing.dto.car.CarDto;
+import com.lukian.onlinecarsharing.dto.car.CreateCarRequestDto;
+import com.lukian.onlinecarsharing.dto.car.UpdateCarRequestDto;
 import com.lukian.onlinecarsharing.service.CarService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

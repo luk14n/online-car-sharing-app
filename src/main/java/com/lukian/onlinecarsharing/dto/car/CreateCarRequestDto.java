@@ -1,4 +1,4 @@
-package com.lukian.onlinecarsharing.dto;
+package com.lukian.onlinecarsharing.dto.car;
 
 import com.lukian.onlinecarsharing.model.Car;
 import jakarta.validation.constraints.Min;

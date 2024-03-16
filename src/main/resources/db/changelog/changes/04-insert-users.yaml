@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-users
+      author: lukian
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: "email", value: "user1@email.com" }
+              - column: { name: "password", value: "$2a$10$5xhkLwNI1gYsCruxVFl8eeZYwsh7VOXucHKIkdp6mubj6r0t2xSKq" }
+              - column: { name: "first_name", value: "User1" }
+              - column: { name: "last_name", value: "Dude" }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: "email", value: "user2@email.com" }
+              - column: { name: "password", value: "$2a$10$ygScuFt4zcyVAHEnWiA/fuk1ac31KPANiq1fLZRNUmBkLWQSs44Gu" }
+              - column: { name: "first_name", value: "User2" }
+              - column: { name: "last_name", value: "Dude2" }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: "email", value: "admin@email.com" }
+              - column: { name: "password", value: "$2a$10$0aRTP4xx4TpbTuVwBiFaHO4ssZ7RqJSyRAVYkAFAIliPUuoST8zma" }
+              - column: { name: "first_name", value: "Admin" }
+              - column: { name: "last_name", value: "User" }
