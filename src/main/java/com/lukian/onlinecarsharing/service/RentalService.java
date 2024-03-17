@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 public interface RentalService {
     RentalDto save(Long userId, RentalCreateRequestDto requestDto);
 
-    List<RentalDto> getActiveOrNot(Pageable pageable, Long userId, boolean isActive);
+    List<RentalDto> getActiveOrNot(Pageable pageable, Long userId, Boolean isActive);
 
     List<RentalDto> findAll(Pageable pageable);
 
@@ -17,4 +17,6 @@ public interface RentalService {
                                   ActualReturnDateSetRequestDto requestDto);
 
     List<RentalDto> findAllPersonal(Long userId, Pageable pageable);
+
+    List<RentalDto> getPersonalActiveOrNot(Long userId, Pageable pageable, Boolean isActive);
 }

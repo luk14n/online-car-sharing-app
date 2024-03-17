@@ -27,6 +27,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class RentalServiceImpl implements RentalService {
+    public static final LocalDate LOCAL_DATE_NOW = LocalDate.now();
     private final RentalRepository rentalRepository;
     private final UserRepository userRepository;
     private final RentalMapper rentalMapper;
@@ -57,21 +58,17 @@ public class RentalServiceImpl implements RentalService {
     }
 
     @Override
-    public List<RentalDto> getActiveOrNot(Pageable pageable, Long userId, boolean isActive) {
-        List<Rental> rentals = rentalRepository.findAllByUserId(pageable, userId);
-        LocalDate now = LocalDate.now();
-        return isActive
+    public List<RentalDto> getActiveOrNot(Pageable pageable, Long userId, Boolean isActive) {
+        if (isActive == null) {
+            return rentalRepository.findByUserId(userId).stream()
+                    .map(rentalMapper::toDto)
+                    .toList();
+        }
+        return userId == null
                 ?
-                rentals.stream()
-                        .filter(r -> r.getReturnTime().isAfter(now))
-                        .map(rentalMapper::toDto)
-                        .toList()
+                filterRentalsByActivityStatus(isActive, rentalRepository.findAll())
                 :
-                rentals.stream()
-                        .filter(r -> r.getReturnTime().isBefore(now)
-                                || r.getReturnTime().isEqual(now))
-                        .map(rentalMapper::toDto)
-                        .toList();
+                getRentalsByUserIdAndActivity(userId, pageable, isActive);
     }
 
     @Override
@@ -107,6 +104,30 @@ public class RentalServiceImpl implements RentalService {
         return rentalRepository.findAllByUserId(pageable, userId).stream()
                 .map(rentalMapper::toDto)
                 .toList();
+    }
+
+    @Override
+    public List<RentalDto> getPersonalActiveOrNot(Long userId, Pageable pageable, Boolean isActive) {
+        return getRentalsByUserIdAndActivity(userId, pageable, isActive);
+    }
+
+    private List<RentalDto> getRentalsByUserIdAndActivity(Long userId, Pageable pageable, boolean isActive) {
+        return filterRentalsByActivityStatus(isActive, rentalRepository.findAllByUserId(pageable, userId));
+    }
+
+    private List<RentalDto> filterRentalsByActivityStatus(boolean isActive, List<Rental> rentals) {
+        return isActive
+                ?
+                rentals.stream()
+                        .filter(r -> r.getReturnTime().isAfter(LOCAL_DATE_NOW))
+                        .map(rentalMapper::toDto)
+                        .toList()
+                :
+                rentals.stream()
+                        .filter(r -> r.getReturnTime().isBefore(LOCAL_DATE_NOW)
+                                || r.getReturnTime().isEqual(LOCAL_DATE_NOW))
+                        .map(rentalMapper::toDto)
+                        .toList();
     }
 
     private boolean actualReturnDateIsValid(LocalDate actualReturnDate, LocalDate startRentalDate) {

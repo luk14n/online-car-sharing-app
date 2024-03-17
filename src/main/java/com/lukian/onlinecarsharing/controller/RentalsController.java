@@ -38,15 +38,29 @@ public class RentalsController {
         return rentalService.save(user.getId(), requestDto);
     }
 
-    @GetMapping("/")
+    @GetMapping("/search/")
     @PreAuthorize(value = "hasRole('ROLE_MANAGER')")
     @Operation(summary = "Get active or not active rentals",
             description = "Retrieves rentals based on status (active or not)"
                     + " and user ID parameters")
-    public List<RentalDto> getActiveOrNotRentals(Pageable pageable,
-                                                 @RequestParam Long userId,
-                                                 @RequestParam boolean isActive) {
+    public List<RentalDto> getActiveOrNotRentals(
+            Pageable pageable,
+            @RequestParam(name = "user_id", required = false) Long userId,
+            @RequestParam(name = "is_active", required = false) Boolean isActive) {
         return rentalService.getActiveOrNot(pageable, userId, isActive);
+    }
+
+    @GetMapping("/search/me/")
+    @PreAuthorize(value = "hasRole('ROLE_CUSTOMER') or hasRole('ROLE_MANAGER')")
+    @Operation(summary = "Get active or not active rentals",
+            description = "Retrieves rentals based on status (active or not)"
+                    + " and user ID parameters")
+    public List<RentalDto> getPersonalActiveOrNotRentals(
+            Authentication authentication,
+            Pageable pageable,
+            @RequestParam(name = "is_active") boolean isActive) {
+        User user= (User) authentication.getPrincipal();
+        return rentalService.getPersonalActiveOrNot(user.getId(), pageable, isActive);
     }
 
     @GetMapping
