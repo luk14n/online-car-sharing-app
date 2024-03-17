@@ -107,12 +107,15 @@ public class RentalServiceImpl implements RentalService {
     }
 
     @Override
-    public List<RentalDto> getPersonalActiveOrNot(Long userId, Pageable pageable, Boolean isActive) {
+    public List<RentalDto> getPersonalActiveOrNot(
+            Long userId, Pageable pageable, Boolean isActive) {
         return getRentalsByUserIdAndActivity(userId, pageable, isActive);
     }
 
-    private List<RentalDto> getRentalsByUserIdAndActivity(Long userId, Pageable pageable, boolean isActive) {
-        return filterRentalsByActivityStatus(isActive, rentalRepository.findAllByUserId(pageable, userId));
+    private List<RentalDto> getRentalsByUserIdAndActivity(
+            Long userId, Pageable pageable, boolean isActive) {
+        return filterRentalsByActivityStatus(
+                isActive, rentalRepository.findAllByUserId(pageable, userId));
     }
 
     private List<RentalDto> filterRentalsByActivityStatus(boolean isActive, List<Rental> rentals) {
@@ -130,7 +133,8 @@ public class RentalServiceImpl implements RentalService {
                         .toList();
     }
 
-    private boolean actualReturnDateIsValid(LocalDate actualReturnDate, LocalDate startRentalDate) {
+    private boolean actualReturnDateIsValid(
+            LocalDate actualReturnDate, LocalDate startRentalDate) {
         if (actualReturnDate.isAfter(startRentalDate)) {
             return true;
         }

@@ -59,7 +59,7 @@ public class RentalsController {
             Authentication authentication,
             Pageable pageable,
             @RequestParam(name = "is_active") boolean isActive) {
-        User user= (User) authentication.getPrincipal();
+        User user = (User) authentication.getPrincipal();
         return rentalService.getPersonalActiveOrNot(user.getId(), pageable, isActive);
     }
 
