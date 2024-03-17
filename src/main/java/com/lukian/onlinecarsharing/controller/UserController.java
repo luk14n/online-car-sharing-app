@@ -1,6 +1,6 @@
 package com.lukian.onlinecarsharing.controller;
 
-import com.lukian.onlinecarsharing.dto.RoleRequestDto;
+import com.lukian.onlinecarsharing.dto.role.RoleRequestDto;
 import com.lukian.onlinecarsharing.dto.user.UserRegisterRequestDto;
 import com.lukian.onlinecarsharing.dto.user.UserRegisterResponseDto;
 import com.lukian.onlinecarsharing.model.User;

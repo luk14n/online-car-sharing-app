@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: populate-rental-table
+      author: lukian
+      changes:
+        - insert:
+            tableName: rentals
+            columns:
+              - column: { "name": "rental_date", "valueDate": "2024-03-15" }
+              - column: { "name": "return_date", "valueDate": "2024-03-20" }
+              - column: { "name": "car_id", value: 1}
+              - column: { "name": "user_id",value: 3 } #admin
+        - insert:
+            tableName: rentals
+            columns:
+              - column: { "name": "rental_date", "valueDate": "2024-03-16" }
+              - column: { "name": "return_date", "valueDate": "2024-03-21" }
+              - column: { "name": "car_id", "value": 2 }
+              - column: { "name": "user_id", "value": 1 }

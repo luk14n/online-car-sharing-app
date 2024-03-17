@@ -1,4 +1,4 @@
-package com.lukian.onlinecarsharing.dto;
+package com.lukian.onlinecarsharing.dto.role;
 
 import jakarta.validation.constraints.NotBlank;
 

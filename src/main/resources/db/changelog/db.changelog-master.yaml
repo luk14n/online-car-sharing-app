@@ -15,3 +15,7 @@ databaseChangeLog:
       file: /db/changelog/changes/07-create-users-roles-table.yaml
   - include:
       file: /db/changelog/changes/08-populate-users-roles-table.yaml
+  - include:
+      file: /db/changelog/changes/09-create-rental-table.yaml
+  - include:
+      file: /db/changelog/changes/10-populate-rental-table.yaml
