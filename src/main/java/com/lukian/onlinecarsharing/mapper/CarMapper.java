@@ -9,10 +9,11 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(config = MapperConfig.class)
 public interface CarMapper {
-
     public CarDto toDto(Car car);
 
     Car toModel(CreateCarRequestDto requestDto);
+
+    Car toModel(CarDto carDto);
 
     void updateModelFromDto(CreateCarRequestDto requestDto,
                             @MappingTarget Car carFromDb);

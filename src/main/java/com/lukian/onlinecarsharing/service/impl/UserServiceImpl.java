@@ -1,4 +1,4 @@
-package com.lukian.onlinecarsharing.service;
+package com.lukian.onlinecarsharing.service.impl;
 
 import com.lukian.onlinecarsharing.dto.user.UserRegisterRequestDto;
 import com.lukian.onlinecarsharing.dto.user.UserRegisterResponseDto;
@@ -9,6 +9,7 @@ import com.lukian.onlinecarsharing.model.Role;
 import com.lukian.onlinecarsharing.model.User;
 import com.lukian.onlinecarsharing.repository.RoleRepository;
 import com.lukian.onlinecarsharing.repository.UserRepository;
+import com.lukian.onlinecarsharing.service.UserService;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;

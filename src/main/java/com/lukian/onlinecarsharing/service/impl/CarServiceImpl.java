@@ -1,4 +1,4 @@
-package com.lukian.onlinecarsharing.service;
+package com.lukian.onlinecarsharing.service.impl;
 
 import com.lukian.onlinecarsharing.dto.car.CarDto;
 import com.lukian.onlinecarsharing.dto.car.CreateCarRequestDto;
@@ -7,6 +7,7 @@ import com.lukian.onlinecarsharing.exception.EntityNotFoundException;
 import com.lukian.onlinecarsharing.mapper.CarMapper;
 import com.lukian.onlinecarsharing.model.Car;
 import com.lukian.onlinecarsharing.repository.CarRepository;
+import com.lukian.onlinecarsharing.service.CarService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
