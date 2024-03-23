@@ -16,6 +16,7 @@ import com.lukian.onlinecarsharing.repository.CarRepository;
 import com.lukian.onlinecarsharing.repository.RentalRepository;
 import com.lukian.onlinecarsharing.repository.UserRepository;
 import com.lukian.onlinecarsharing.service.CarService;
+import com.lukian.onlinecarsharing.service.NotificationService;
 import com.lukian.onlinecarsharing.service.RentalService;
 import jakarta.transaction.Transactional;
 import java.time.LocalDate;
@@ -34,6 +35,7 @@ public class RentalServiceImpl implements RentalService {
     private final CarService carService;
     private final CarMapper carMapper;
     private final CarRepository carRepository;
+    private final NotificationService notificationService;
 
     @Override
     @Transactional
@@ -51,6 +53,8 @@ public class RentalServiceImpl implements RentalService {
 
             carFromDb.setInventory(carFromDb.getInventory() - 1);
             carRepository.save(carFromDb);
+
+            notificationService.sendMessageAboutCreatedRental(rental);
 
             return rentalMapper.toDto(rentalRepository.save(rental));
         }
@@ -83,6 +87,10 @@ public class RentalServiceImpl implements RentalService {
     public RentalDto setActualReturnDate(Long userId,
                                          ActualReturnDateSetRequestDto requestDto) {
         Rental rentalFromDB = getRentalFromDBbyUserIdAndRentalId(userId, requestDto.rentalId());
+
+        if (rentalFromDB.getActualReturnDate().isAfter(rentalFromDB.getReturnTime())) {
+            notificationService.sendMessageAboutOverdueRental(rentalFromDB);
+        }
 
         if (rentalFromDB.getActualReturnDate() == null
                 && actualReturnDateIsValid(
