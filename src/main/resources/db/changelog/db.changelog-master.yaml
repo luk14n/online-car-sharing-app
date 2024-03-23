@@ -19,3 +19,5 @@ databaseChangeLog:
       file: /db/changelog/changes/09-create-rental-table.yaml
   - include:
       file: /db/changelog/changes/10-populate-rental-table.yaml
+  - include:
+      file: /db/changelog/changes/11-create-payments-table.yaml
