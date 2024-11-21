@@ -16,7 +16,7 @@ The project is developed using the following technologies and tools:
 - ***Stripe API*** (for handling payment processes)
 - ***Telegram API*** (for convenient messaging system for users)
 
-## Architecture
+## Architecture.
 ![img.png](img.png)
 
 Problems solved:
